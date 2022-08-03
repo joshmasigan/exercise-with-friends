@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ExerciseObject(props) {
   function handleDelete() {
@@ -8,14 +9,16 @@ function ExerciseObject(props) {
     <div className="mb-3">
       <h3>{props.name}</h3>
       <p>
-        {props.desc} for {props.length} minutes
+        {props.desc} for {props.length} minutes completed on:{" "}
+        {props.date.substring(0, 10)}
       </p>
-      <p>completed on: {props.date}</p>
       <div className="mb-3">
-        <button className="btn-primary" onClick={handleDelete}>
+        <Link to={"/edit/" + props.id} className="btn btn-primary">
+          Edit Exercise
+        </Link>
+        <button className="btn btn-secondary ms-2" onClick={handleDelete}>
           Delete Exercise
         </button>
-        <button className="btn-secondary">Edit Exercise</button>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export default function ExercisesList(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/exercises/")
+      .get("http://localhost:4000/exercises/") // change to mongodb address for Heroku access
       .then((response) => {
         setExercises(response.data);
       })
@@ -18,7 +18,7 @@ export default function ExercisesList(props) {
 
   function deleteExercise(id) {
     axios
-      .delete("http://localhost:4000/exercises/" + id)
+      .delete("http://localhost:4000/exercises/" + id) // change to mongodb address for Heroku access
       .then((res) => console.log(res.data));
     setExercises(
       exercises.filter((item) => {
@@ -38,7 +38,7 @@ export default function ExercisesList(props) {
             name={exercise.username}
             desc={exercise.description}
             length={exercise.duration}
-            date={exercise.date}
+            date={exercise.date.toLocaleString()}
             delete={deleteExercise}
           />
         );
